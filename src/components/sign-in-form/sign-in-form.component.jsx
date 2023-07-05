@@ -8,6 +8,7 @@ import { useState } from "react";
 
 import "./sign-in-form.styles.scss";
 import Button from "../button/button.component";
+
 const defaultFormFields = {
   email: "",
   password: "",
@@ -28,11 +29,10 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
 
       resetFormFields();
     } catch (error) {
